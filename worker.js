@@ -7,7 +7,7 @@ button.addEventListener("click", function(){
     // run api
     text = box1.value
     box2.value = text
-}); 
+});
 
 const userAction = async () => {
     const response = await fetch('http://example.com/movies.json', {
