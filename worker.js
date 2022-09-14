@@ -6,17 +6,17 @@ var box2 = document.getElementById('translated')
 button.addEventListener("click", function(){ 
     // run api
     text = box1.value
-    box2.value = text
+    const action = async (text) => {
+      const response = await fetch('http://127.0.0.1:8000/items/?text='+text, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const myJson = await response.json(); //extract JSON from the http response
+      // do something with myJson
+      box2.value = myJson
+    }
+    action(text)
 });
 
-const userAction = async () => {
-    const response = await fetch('http://example.com/movies.json', {
-      method: 'POST',
-      body: myBody, // string or object
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const myJson = await response.json(); //extract JSON from the http response
-    // do something with myJson
-  }
